@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: aluguel-carros
+  config:
+    import: optional:file:.env[.properties]
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    hikari:
+      maximum-pool-size: 5
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        default_schema: aluguel
+        default_batch_fetch_size: 50
+  flyway:
+    default-schema: aluguel
+    schemas: aluguel
+
+app:
+  jwt:
+    secret: ${JWT_SECRET}
+    expiracao-horas: 8
+  cors:
+    allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:5173}
+  seed:
+    enabled: ${APP_SEED_ENABLED:false}
+    senha: ${APP_SEED_SENHA:}
