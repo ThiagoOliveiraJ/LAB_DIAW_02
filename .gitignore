@@ -1,0 +1,13 @@
+.env
+.env.*
+!.env.example
+
+backend/target/
+
+node_modules/
+frontend/dist/
+
+.idea/
+.vscode/
+*.iml
+.DS_Store
