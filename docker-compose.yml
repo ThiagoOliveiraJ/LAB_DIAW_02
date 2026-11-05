@@ -1,0 +1,31 @@
+services:
+  backend:
+    build: ./backend
+    env_file: ./backend/.env
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+
+  frontend:
+    build: ./frontend
+    depends_on:
+      - backend
+    ports:
+      - "5173:80"
+    restart: unless-stopped
+
+  db:
+    image: postgres:16-alpine
+    profiles:
+      - banco-local
+    environment:
+      POSTGRES_DB: aluguel
+      POSTGRES_USER: aluguel
+      POSTGRES_PASSWORD: aluguel
+    ports:
+      - "5433:5432"
+    volumes:
+      - aluguel_db:/var/lib/postgresql/data
+
+volumes:
+  aluguel_db:
