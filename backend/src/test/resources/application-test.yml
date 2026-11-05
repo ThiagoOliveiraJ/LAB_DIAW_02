@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:aluguel;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DB_CLOSE_DELAY=-1
+    username: sa
+    password: ""
+
+app:
+  jwt:
+    secret: segredo-usado-apenas-nos-testes-automatizados
+  seed:
+    enabled: true
+    senha: senha-de-teste
